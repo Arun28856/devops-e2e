@@ -32,7 +32,7 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                     sh """
-                        sed -i 's|<DOCKERHUB_USERNAME>/devops-app:latest|${IMAGE_NAME}:${IMAGE_TAG}|' k8s/deployment.yaml
+                        sed -i 's|<DOCKERHUB_USERNAME>/devops-e2e:latest|${IMAGE_NAME}:${IMAGE_TAG}|' k8s/deployment.yaml
                         kubectl apply -f k8s/deployment.yaml
                         kubectl rollout status deployment/devops-e2e
                     """

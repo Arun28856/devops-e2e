@@ -34,7 +34,7 @@ pipeline {
                     sh """
                         sed -i 's|<DOCKERHUB_USERNAME>/devops-app:latest|${IMAGE_NAME}:${IMAGE_TAG}|' k8s/deployment.yaml
                         kubectl apply -f k8s/deployment.yaml
-                        kubectl rollout status deployment/devops-app
+                        kubectl rollout status deployment/devops-e2e
                     """
                 }
             }
